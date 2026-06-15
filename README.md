@@ -13,6 +13,8 @@ Demostrar de forma práctica los riesgos de seguridad críticos asociados con el
 * **Mecanismo de Evasión:** Proxychains4 + Tor Network (Proxy SOCKS5 local en puerto 9050).
 * **Plataforma Objetivo:** `http://altoro.testfire.net` (Aplicación web insegura de pruebas).
 * **Interfaz de Captura:** Interfaz virtual del sistema (`any`) sin modo promiscuo.
+<img width="649" height="512" alt="Evidencia 1 Enrutamiento de tráfico mediante Proxychains4" src="https://github.com/user-attachments/assets/1ea7689a-bb18-4bb6-a49c-e1e8e85390c5" />
+
 
 ### 3. Metodología y Procedimiento (Fases de Pentesting)
 1. **Fase 1: Reconocimiento y Anonimato:** Se inicializó el demonio de Tor (`sudo systemctl start tor`) y se forzó el tráfico del navegador web a través de circuitos intermedios usando el comando `proxychains4 firefox http://altoro.testfire.net/login.jsp &`.
@@ -47,6 +49,7 @@ To practically demonstrate the critical security risks associated with cleartext
 * **Evasion Mechanism:** Proxychains4 + Tor Network (Local SOCKS5 proxy on port 9050).
 * **Target Environment:** `http://altoro.testfire.net` (Insecure public testing sandbox).
 * **Capture Interface:** System virtual interface (`any`) without promiscuous mode.
+<img width="649" height="512" alt="Evidencia 1 Enrutamiento de tráfico mediante Proxychains4" src="https://github.com/user-attachments/assets/26b86599-2b96-4180-9746-76abc709f06a" />
 
 ### 3. Methodology & Procedure (Pentesting Phases)
 1. **Phase 1: Reconnaissance & Evasion:** Enabled the Tor daemon (`sudo systemctl start tor`) and forced web browser traffic through secure relay circuits using the command `proxychains4 firefox http://altoro.testfire.net/login.jsp &`.
