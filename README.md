@@ -37,6 +37,21 @@ Demostrar de forma práctica los riesgos de seguridad críticos asociados con el
 
 • Remediación: Forzar el uso exclusivo de HTTPS implementando certificados TLS y activar políticas HSTS (HTTP Strict Transport Security) para mitigar cualquier intento de degradación de canal.
 
+## Habilidades Demostradas
+
+- Análisis de paquetes de red  
+- Inspección de tráfico con Wireshark  
+- Análisis del protocolo HTTP  
+- Evaluación de exposición de credenciales  
+- Configuración de Proxychains4  
+- Enrutamiento mediante la red Tor  
+- Documentación de seguridad  
+- Elaboración de reportes técnicos
+
+## Aviso Ético
+
+Este laboratorio se realizó exclusivamente en un entorno controlado utilizando la aplicación de pruebas vulnerable Altoro Mutual. No se realizaron pruebas contra sistemas no autorizados ni activos de terceros.
+
 ---
 ---
 
@@ -72,7 +87,7 @@ Security Impact: Unencrypted HTTP communication leaves communication links vulne
 
 Remediation: Enforce global HTTPS deployment by provisioning valid TLS certificates and configuring HSTS (HTTP Strict Transport Security) flags to deny cleartext fallbacks.
 
-7. Skills Demonstrated
+## Skills Demonstrated
 
 - Network Packet Analysis  
 - Wireshark Traffic Inspection  
@@ -81,11 +96,12 @@ Remediation: Enforce global HTTPS deployment by provisioning valid TLS certifica
 - Proxychains4 Configuration  
 - Tor Network Routing  
 - Security Documentation  
-- Technical Reporting
+- Technical Reporting  
 
-8. Ethical Notice
+## Ethical Notice
 
 This laboratory was conducted exclusively in a controlled testing environment using the Altoro Mutual vulnerable training application. No unauthorized systems or third-party assets were targeted.
+
 
 ### Referencias / References
 * Cisco Networking Academy. (2023). *Introduction to Cybersecurity: Packet Analysis and Unencrypted Protocols*. Cisco.
