@@ -1,3 +1,11 @@
+# Wireshark HTTP Traffic Analysis Laboratory
+
+🌐 **Language / Idioma:**  
+[📖 Read in English](#-english-version) | [📖 Leer en Español](#-versión-en-español)
+
+---
+
+## 🇪🇸 Versión en Español**
 ### 1. Objetivo del Laboratorio
 Demostrar de forma práctica los riesgos de seguridad críticos asociados con el uso de protocolos en texto plano (HTTP) mediante el análisis de paquetes en un entorno controlado. Esta auditoría valida la exposición de credenciales de autenticación cuando se prescinde de cifrado TLS/SSL en la capa de transporte.
 
@@ -18,15 +26,47 @@ Demostrar de forma práctica los riesgos de seguridad críticos asociados con el
 
 4. Resultados y Evidencias
 • Evidencia Principal: Al inspeccionar el paquete HTTP POST aislado (Paquete No. 279), se desplegó el árbol de datos correspondiente a HTML Form URL Encoded: application/x-www-form-urlencoded. Los campos de identidad del usuario reflejaron en texto plano los valores exactos introducidos, confirmando la fuga total de confidencialidad en el canal.
+
 <img width="979" height="557" alt="2026-06-15_13-56" src="https://github.com/user-attachments/assets/e205ed7b-d007-4383-a415-3f199f95c3d4" />
 
 
-5. Conclusiones
+6. Conclusiones
 • Impacto en Seguridad: El uso de HTTP expone directamente la organización a ataques de sniffing y Man-in-the-Middle (MitM).
 
 • Remediación: Forzar el uso exclusivo de HTTPS implementando certificados TLS y activar políticas HSTS (HTTP Strict Transport Security) para mitigar cualquier intento de degradación de canal.
 
 ---
+---
+
+## 🇺🇸 English Version
+
+### 1. Laboratory Objective
+To practically demonstrate the critical security risks associated with cleartext protocols (HTTP) through packet analysis in a controlled environment. This audit validates how authentication credentials are exposed when TLS/SSL encryption is absent at the transport layer.
+
+### 2. Topology and Environment
+* **Attacker / Auditor Host:** Kali Linux VM (`127.0.0.1` - Local dynamic routing)
+* **Evasion Mechanism:** Proxychains4 + Tor Network (Local SOCKS5 proxy on port 9050).
+* **Target Environment:** `http://altoro.testfire.net` (Insecure public testing sandbox).
+* **Capture Interface:** System virtual interface (`any`) without promiscuous mode.
+
+### 3. Methodology & Procedure (Pentesting Phases)
+1. **Phase 1: Reconnaissance & Evasion:** Enabled the Tor daemon (`sudo systemctl start tor`) and forced web browser traffic through secure relay circuits using the command `proxychains4 firefox http://altoro.testfire.net/login.jsp &`.
+2. **Phase 2: Scanning & Monitoring:** Launched Wireshark and configured active packet inspection on the global `any` interface to capture locally encapsulated traffic.
+3. **Phase 3: Gaining Access:** Interacted with the login application by submitting test credentials (`jsmith` / `Password123!`). After submission, the capture was stopped, and the following application layer display filter was applied:
+```text
+   http.request.method == "POST"
+  ```
+ <img width="983" height="287" alt="2026-06-15_13-53" src="https://github.com/user-attachments/assets/c0a68e2e-dc55-41e9-8757-c9acb627c7bf" />
+
+4. Results & Evidence
+Core Evidence: Upon inspecting the isolated HTTP POST packet (Packet No. 279), the HTML Form URL Encoded: application/x-www-form-urlencoded structural block was expanded. The user identity fields explicitly revealed cleartext strings matching the input parameters, confirming a complete loss of confidentiality over the wire.
+
+<img width="979" height="557" alt="2026-06-15_13-56" src="https://github.com/user-attachments/assets/e205ed7b-d007-4383-a415-3f199f95c3d4" />
+
+6. Conclusions & Hardening
+Security Impact: Unencrypted HTTP communication leaves communication links vulnerable to network sniffing and Man-in-the-Middle (MitM) positioning.
+
+Remediation: Enforce global HTTPS deployment by provisioning valid TLS certificates and configuring HSTS (HTTP Strict Transport Security) flags to deny cleartext fallbacks.
 
 ### Referencias / References
 * Cisco Networking Academy. (2023). *Introduction to Cybersecurity: Packet Analysis and Unencrypted Protocols*. Cisco.
