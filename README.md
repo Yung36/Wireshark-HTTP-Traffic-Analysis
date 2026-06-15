@@ -72,7 +72,7 @@ Security Impact: Unencrypted HTTP communication leaves communication links vulne
 
 Remediation: Enforce global HTTPS deployment by provisioning valid TLS certificates and configuring HSTS (HTTP Strict Transport Security) flags to deny cleartext fallbacks.
 
-7. ## Skills Demonstrated
+7. Skills Demonstrated
 
 - Network Packet Analysis  
 - Wireshark Traffic Inspection  
@@ -83,7 +83,7 @@ Remediation: Enforce global HTTPS deployment by provisioning valid TLS certifica
 - Security Documentation  
 - Technical Reporting
 
-8.## Ethical Notice
+8. Ethical Notice
 
 This laboratory was conducted exclusively in a controlled testing environment using the Altoro Mutual vulnerable training application. No unauthorized systems or third-party assets were targeted.
 
