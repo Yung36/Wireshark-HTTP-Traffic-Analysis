@@ -4,7 +4,7 @@
 
 ---
 
-## 🇪🇸 Versión en Español**
+## 🇪🇸 Versión en Español
 ### 1. Objetivo del Laboratorio
 Demostrar de forma práctica los riesgos de seguridad críticos asociados con el uso de protocolos en texto plano (HTTP) mediante el análisis de paquetes en un entorno controlado. Esta auditoría valida la exposición de credenciales de autenticación cuando se prescinde de cifrado TLS/SSL en la capa de transporte.
 
