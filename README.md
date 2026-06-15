@@ -13,19 +13,20 @@ Demostrar de forma práctica los riesgos de seguridad críticos asociados con el
 * **Mecanismo de Evasión:** Proxychains4 + Tor Network (Proxy SOCKS5 local en puerto 9050).
 * **Plataforma Objetivo:** `http://altoro.testfire.net` (Aplicación web insegura de pruebas).
 * **Interfaz de Captura:** Interfaz virtual del sistema (`any`) sin modo promiscuo.
-<img width="649" height="512" alt="Evidencia 1 Enrutamiento de tráfico mediante Proxychains4" src="https://github.com/user-attachments/assets/1ea7689a-bb18-4bb6-a49c-e1e8e85390c5" />
+
 
 
 ### 3. Metodología y Procedimiento (Fases de Pentesting)
 1. **Fase 1: Reconocimiento y Anonimato:** Se inicializó el demonio de Tor (`sudo systemctl start tor`) y se forzó el tráfico del navegador web a través de circuitos intermedios usando el comando `proxychains4 firefox http://altoro.testfire.net/login.jsp &`.
-2. **Fase 2: Escaneo y Monitoreo:** Se abrió Wireshark y se configuró la escucha activa sobre la interfaz global `any` para capturar el tráfico encapsulado localmente.
-3. **Fase 3: Obtención de Acceso:** Se interactuó con el formulario de autenticación enviando credenciales de prueba (`jsmith` / `Password123!`). Posterior al envío, se detuvo la captura de paquetes y se aplicó el siguiente filtro de visualización en la capa de aplicación:
+   <img width="649" height="512" alt="Evidencia 1 Enrutamiento de tráfico mediante Proxychains4" src="https://github.com/user-attachments/assets/1ea7689a-bb18-4bb6-a49c-e1e8e85390c5" />
+3. **Fase 2: Escaneo y Monitoreo:** Se abrió Wireshark y se configuró la escucha activa sobre la interfaz global `any` para capturar el tráfico encapsulado localmente.
+4. **Fase 3: Obtención de Acceso:** Se interactuó con el formulario de autenticación enviando credenciales de prueba (`jsmith` / `Password123!`). Posterior al envío, se detuvo la captura de paquetes y se aplicó el siguiente filtro de visualización en la capa de aplicación:
    ```text
    http.request.method == "POST"
     ```
    <img width="983" height="287" alt="2026-06-15_13-53" src="https://github.com/user-attachments/assets/c0a68e2e-dc55-41e9-8757-c9acb627c7bf" />
 
-4. Resultados y Evidencias
+5. Resultados y Evidencias
 • Evidencia Principal: Al inspeccionar el paquete HTTP POST aislado (Paquete No. 279), se desplegó el árbol de datos correspondiente a HTML Form URL Encoded: application/x-www-form-urlencoded. Los campos de identidad del usuario reflejaron en texto plano los valores exactos introducidos, confirmando la fuga total de confidencialidad en el canal.
 
 <img width="979" height="557" alt="2026-06-15_13-56" src="https://github.com/user-attachments/assets/e205ed7b-d007-4383-a415-3f199f95c3d4" />
@@ -53,8 +54,9 @@ To practically demonstrate the critical security risks associated with cleartext
 
 ### 3. Methodology & Procedure (Pentesting Phases)
 1. **Phase 1: Reconnaissance & Evasion:** Enabled the Tor daemon (`sudo systemctl start tor`) and forced web browser traffic through secure relay circuits using the command `proxychains4 firefox http://altoro.testfire.net/login.jsp &`.
-2. **Phase 2: Scanning & Monitoring:** Launched Wireshark and configured active packet inspection on the global `any` interface to capture locally encapsulated traffic.
-3. **Phase 3: Gaining Access:** Interacted with the login application by submitting test credentials (`jsmith` / `Password123!`). After submission, the capture was stopped, and the following application layer display filter was applied:
+2. <img width="649" height="512" alt="Evidencia 1 Enrutamiento de tráfico mediante Proxychains4" src="https://github.com/user-attachments/assets/1ea7689a-bb18-4bb6-a49c-e1e8e85390c5" />
+3. **Phase 2: Scanning & Monitoring:** Launched Wireshark and configured active packet inspection on the global `any` interface to capture locally encapsulated traffic.
+4. **Phase 3: Gaining Access:** Interacted with the login application by submitting test credentials (`jsmith` / `Password123!`). After submission, the capture was stopped, and the following application layer display filter was applied:
 ```text
    http.request.method == "POST"
   ```
