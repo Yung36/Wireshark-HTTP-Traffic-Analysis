@@ -1,7 +1,6 @@
 # Wireshark HTTP Traffic Analysis Laboratory
-
-🌐 **Language / Idioma:**  
-[📖 Read in English](#-english-version) | [📖 Leer en Español](#-versión-en-español)
+ **Language / Idioma:**  
+[Read in English](#-english-version) | [Leer en Español](#-versión-en-español)
 
 ---
 
