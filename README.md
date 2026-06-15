@@ -26,6 +26,14 @@ Demostrar de forma práctica los riesgos de seguridad críticos asociados con el
 
 • Remediación: Forzar el uso exclusivo de HTTPS implementando certificados TLS y activar políticas HSTS (HTTP Strict Transport Security) para mitigar cualquier intento de degradación de canal.
 
+---
+
+### Referencias / References
+* Cisco Networking Academy. (2023). *Introduction to Cybersecurity: Packet Analysis and Unencrypted Protocols*. Cisco.
+* OWASP Foundation. (2021). *Top 10 Security Risks: A02:2021-Cryptographic Failures*. https://owasp.org/Top10/A02_2021-Cryptographic_Failures/
+* The Tor Project. (2026). *Proxychains and Tor Integration for Local Traffic Routing*. Tor Documentation. https://support.torproject.org/
+* Wireshark Foundation. (2026). *Wireshark User's Guide: Display Filters and Application Layer Inspection*. Wireshark. https://www.wireshark.org/docs/wsug_html_chunked/
+
 
 
 
