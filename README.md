@@ -72,6 +72,21 @@ Security Impact: Unencrypted HTTP communication leaves communication links vulne
 
 Remediation: Enforce global HTTPS deployment by provisioning valid TLS certificates and configuring HSTS (HTTP Strict Transport Security) flags to deny cleartext fallbacks.
 
+7. ## Skills Demonstrated
+
+- Network Packet Analysis  
+- Wireshark Traffic Inspection  
+- HTTP Protocol Analysis  
+- Credential Exposure Assessment  
+- Proxychains4 Configuration  
+- Tor Network Routing  
+- Security Documentation  
+- Technical Reporting
+
+8.## Ethical Notice
+
+This laboratory was conducted exclusively in a controlled testing environment using the Altoro Mutual vulnerable training application. No unauthorized systems or third-party assets were targeted.
+
 ### Referencias / References
 * Cisco Networking Academy. (2023). *Introduction to Cybersecurity: Packet Analysis and Unencrypted Protocols*. Cisco.
 * OWASP Foundation. (2021). *Top 10 Security Risks: A02:2021-Cryptographic Failures*. https://owasp.org/Top10/A02_2021-Cryptographic_Failures/
