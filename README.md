@@ -1,16 +1,16 @@
 ### 1. Objetivo del Laboratorio
-[cite_start]Demostrar de forma práctica los riesgos de seguridad críticos asociados con el uso de protocolos en texto plano (HTTP) mediante el análisis de paquetes en un entorno controlado[cite: 5, 9]. Esta auditoría valida la exposición de credenciales de autenticación cuando se prescinde de cifrado TLS/SSL en la capa de transporte.
+Demostrar de forma práctica los riesgos de seguridad críticos asociados con el uso de protocolos en texto plano (HTTP) mediante el análisis de paquetes en un entorno controlado. Esta auditoría valida la exposición de credenciales de autenticación cuando se prescinde de cifrado TLS/SSL en la capa de transporte.
 
 ### 2. Topología y Entorno
-* [cite_start]**Host Atacante / Auditor:** Kali Linux VM (`127.0.0.1` - Enrutamiento dinámico local) [cite: 10]
+**Host Atacante / Auditor:** Kali Linux VM (`127.0.0.1` - Enrutamiento dinámico local) 
 * **Mecanismo de Evasión:** Proxychains4 + Tor Network (Proxy SOCKS5 local en puerto 9050).
 * **Plataforma Objetivo:** `http://altoro.testfire.net` (Aplicación web insegura de pruebas).
 * **Interfaz de Captura:** Interfaz virtual del sistema (`any`) sin modo promiscuo.
 
 ### 3. Metodología y Procedimiento (Fases de Pentesting)
 1. **Fase 1: Reconocimiento y Anonimato:** Se inicializó el demonio de Tor (`sudo systemctl start tor`) y se forzó el tráfico del navegador web a través de circuitos intermedios usando el comando `proxychains4 firefox http://altoro.testfire.net/login.jsp &`.
-2. [cite_start]**Fase 2: Escaneo y Monitoreo:** Se abrió Wireshark y se configuró la escucha activa sobre la interfaz global `any` para capturar el tráfico encapsulado localmente[cite: 9].
-3. **Fase 3: Obtención de Acceso:** Se interactuó con el formulario de autenticación enviando credenciales de prueba (`jsmith` / `Password123!`). [cite_start]Posterior al envío, se detuvo la captura de paquetes y se aplicó el siguiente filtro de visualización en la capa de aplicación[cite: 9]:
+2. **Fase 2: Escaneo y Monitoreo:** Se abrió Wireshark y se configuró la escucha activa sobre la interfaz global `any` para capturar el tráfico encapsulado localmente.
+3. **Fase 3: Obtención de Acceso:** Se interactuó con el formulario de autenticación enviando credenciales de prueba (`jsmith` / `Password123!`). Posterior al envío, se detuvo la captura de paquetes y se aplicó el siguiente filtro de visualización en la capa de aplicación:
    ```text
    http.request.method == "POST"
    <img width="983" height="287" alt="2026-06-15_13-53" src="https://github.com/user-attachments/assets/c0a68e2e-dc55-41e9-8757-c9acb627c7bf" />
