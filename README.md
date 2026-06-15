@@ -13,6 +13,7 @@ Demostrar de forma práctica los riesgos de seguridad críticos asociados con el
 3. **Fase 3: Obtención de Acceso:** Se interactuó con el formulario de autenticación enviando credenciales de prueba (`jsmith` / `Password123!`). Posterior al envío, se detuvo la captura de paquetes y se aplicó el siguiente filtro de visualización en la capa de aplicación:
    ```text
    http.request.method == "POST"
+    ```
    <img width="983" height="287" alt="2026-06-15_13-53" src="https://github.com/user-attachments/assets/c0a68e2e-dc55-41e9-8757-c9acb627c7bf" />
 
 4. Resultados y Evidencias
